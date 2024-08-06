@@ -49,7 +49,7 @@ variable "ami_id" {
 variable "ec2_name" {
   description = "Name of EC2"
   type        = string
-  default     = "azmi1-ec2-prometheus-grafana" # Replace with your preferred EC2 Instance Name 
+  default     = "azmi1-ec2-prometheus-grafana-do-not-delete" # Replace with your preferred EC2 Instance Name 
 }
 
 variable "instance_type" {

@@ -5,7 +5,7 @@ resource "tls_private_key" "azmi1-tf-tls" {
 }
 
 resource "aws_key_pair" "azmi1-tf-keypair" {
-  key_name   = "azmi1-tf-keypair"
+  key_name   = var.key_name
   public_key = tls_private_key.azmi1-tf-tls.public_key_openssh
 }
 
