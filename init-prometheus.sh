@@ -5,10 +5,9 @@ yum update -y
 yum install stress-ng -y
 
 # Download prometheus archive installation file and unarchive installation file
-cd /tmp
 curl -LO https://github.com/prometheus/prometheus/releases/download/v2.53.1/prometheus-2.53.1.linux-amd64.tar.gz
 tar -xvf prometheus-2.53.1.linux-amd64.tar.gz
-rm prometheus-2.53.1.linux-amd64.tar.gz
+rm -f prometheus-2.53.1.linux-amd64.tar.gz
 mv prometheus-2.53.1.linux-amd64 prometheus-files
 
 # Create a user for Prometheus and assign Prometheus as the owner of these directories
@@ -21,7 +20,7 @@ mkdir /var/lib/prometheus
 chown prometheus:prometheus /etc/prometheus
 chown prometheus:prometheus /var/lib/prometheus
 
-# Copy the binaries prometheus and promtool from the prometheus-files directory to /usr/local/bin and update the ownership to the user prometheus
+# Copy the binaries prometheus and promtool from the prometheus-files directory to /usr/local/bin and update the ownership to the user prometheus.
 cp prometheus-files/prometheus /usr/local/bin/
 cp prometheus-files/promtool /usr/local/bin/
 chown prometheus:prometheus /usr/local/bin/prometheus
@@ -84,10 +83,9 @@ WantedBy=multi-user.target
 EOF
 
 # dowload, unarchive and move node_exporter binary
-cd /tmp
 curl -LO https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-amd64.tar.gz
 tar -xvf node_exporter-1.8.2.linux-amd64.tar.gz
-rm node_exporter-1.8.2.linux-amd64.tar.gz
+rm -f node_exporter-1.8.2.linux-amd64.tar.gz
 mv node_exporter-1.8.2.linux-amd64/node_exporter /usr/local/bin/
 
 # create group/user for node_exporter
@@ -111,10 +109,9 @@ WantedBy=multi-user.target
 EOF
 
 # Download and install grafana
-cd /tmp
 curl -LO https://dl.grafana.com/enterprise/release/grafana-enterprise-11.1.3-1.x86_64.rpm
 yum localinstall grafana-enterprise-11.1.3-1.x86_64.rpm -y
-rm grafana-enterprise-11.1.3-1.x86_64.rpm
+rm -f grafana-enterprise-11.1.3-1.x86_64.rpm
 
 # Configure Provisioning
 sed -i 's|;provisioning = conf/provisioning|provisioning = /etc/grafana/provisioning|g' /etc/grafana/grafana.ini
@@ -132,10 +129,9 @@ datasources:
 EOF
 
 # Download and unarchive alertmanager
-cd /tmp
 curl -LO https://github.com/prometheus/alertmanager/releases/download/v0.27.0/alertmanager-0.27.0.linux-amd64.tar.gz
 tar -xvf alertmanager-0.27.0.linux-amd64.tar.gz
-rm alertmanager-0.27.0.linux-amd64.tar.gz
+rm -f alertmanager-0.27.0.linux-amd64.tar.gz
 cd alertmanager-0.27.0.linux-amd64
 
 # create group/user for alertmanager
