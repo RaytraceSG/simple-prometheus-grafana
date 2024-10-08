@@ -21,7 +21,7 @@ mkdir /var/lib/prometheus
 chown prometheus:prometheus /etc/prometheus
 chown prometheus:prometheus /var/lib/prometheus
 
-# Copy the binaries prometheus and promtool from the prometheus-files directory to /usr/local/bin and update the ownership to the user prometheus
+# Copy the binaries prometheus and promtool from the prometheus-files directory to /usr/local/bin and update the ownership to the user prometheus.
 cp prometheus-files/prometheus /usr/local/bin/
 cp prometheus-files/promtool /usr/local/bin/
 chown prometheus:prometheus /usr/local/bin/prometheus
