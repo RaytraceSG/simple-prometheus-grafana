@@ -44,7 +44,7 @@ resource "aws_security_group" "azmi1-tf-sg-allow-prometheus-grafana" {
   name   = var.sg_name2
   vpc_id = module.vpc.vpc_id # var.vpc_id
 
-# Prometheus
+  # Prometheus
   ingress {
     from_port   = 9090
     to_port     = 9090
@@ -52,7 +52,7 @@ resource "aws_security_group" "azmi1-tf-sg-allow-prometheus-grafana" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-#node_exporter
+  #node_exporter
   ingress {
     from_port   = 9100
     to_port     = 9100
@@ -60,7 +60,7 @@ resource "aws_security_group" "azmi1-tf-sg-allow-prometheus-grafana" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-#alertmanager
+  #alertmanager
   ingress {
     from_port   = 9093
     to_port     = 9093
@@ -68,7 +68,7 @@ resource "aws_security_group" "azmi1-tf-sg-allow-prometheus-grafana" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-#grafana
+  #grafana
   ingress {
     from_port   = 3000
     to_port     = 3000

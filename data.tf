@@ -2,7 +2,7 @@
 
 data "aws_ami" "aws_ami_data" {
   most_recent = true
-  owners = ["amazon"]
+  owners      = ["amazon"]
 
   filter {
     name   = "name"
@@ -24,4 +24,12 @@ data "aws_ami" "aws_ami_data" {
     values = ["x86_64"]
   }
 
+}
+
+data "aws_subnet" "public_subnet_data" {
+  filter {
+    name   = "tag:Name"
+    values = ["luqman-vpc-tf-module-public-us-east-1a"]
+
+  }
 }
