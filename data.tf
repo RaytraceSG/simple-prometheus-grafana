@@ -33,3 +33,10 @@ data "aws_subnet" "public_subnet_data" {
 
   }
 }
+
+data "aws_vpc" "vpc_data" {
+  filter {
+    name   = "tag:Name"
+    values = ["luqman-vpc-tf-module"]
+  }
+}
